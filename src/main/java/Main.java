@@ -5,38 +5,24 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args){
-        Student s1 = new Student();
-
-        s1.setRollNo(1);
-        s1.setsName("Akash S");
-        s1.setAge(27);
+        Alien a1 = new Alien();
+        a1.setId(1);
+        a1.setName("Virendra");
+        a1.setTech("JS");
 
 
         SessionFactory sf = new Configuration()
-                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Alien.class)
                 .configure()
                 .buildSessionFactory();
 
         Session session = sf.openSession();
-
         Transaction transaction = session.beginTransaction();
 
-        // Update the student with rollno 1
-//        session.merge(s1);
-//        transaction.commit();
-
-        // Remove the student with rollno 3
-
-        Student studentToDelete = session.find(Student.class, 3);
-
-        session.remove(studentToDelete);
+        session.persist(a1);
         transaction.commit();
-
-
 
         session.close();
         sf.close();
-
-        System.out.println(s1);
     }
 }
