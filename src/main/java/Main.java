@@ -7,9 +7,9 @@ public class Main {
     public static void main(String[] args){
         Student s1 = new Student();
 
-        s1.setsName("Akash");
-        s1.setRollNo(1);
-        s1.setAge(27);
+        s1.setsName("Vanshikaa");
+        s1.setRollNo(2);
+        s1.setAge(25);
 
         Configuration cnfg = new Configuration();
         cnfg.addAnnotatedClass(Student.class);
