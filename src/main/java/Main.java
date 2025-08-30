@@ -5,11 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args){
-        Student s1 = new Student();
-
-        s1.setsName("Rahul");
-        s1.setRollNo(3);
-        s1.setAge(23);
+        Student s1 = null;
 
 
         SessionFactory sf = new Configuration()
@@ -19,12 +15,11 @@ public class Main {
 
         Session session = sf.openSession();
 
-        Transaction transaction = session.beginTransaction();
-
-        session.persist(s1);
-        transaction.commit();
+        s1 = session.find(Student.class, 1);
 
         session.close();
         sf.close();
+
+        System.out.println(s1);
     }
 }
