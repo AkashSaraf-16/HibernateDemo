@@ -7,21 +7,24 @@ public class Main {
     public static void main(String[] args){
         Student s1 = new Student();
 
-        s1.setsName("Vanshikaa");
-        s1.setRollNo(2);
-        s1.setAge(25);
-
-        Configuration cnfg = new Configuration();
-        cnfg.addAnnotatedClass(Student.class);
-        cnfg.configure();
+        s1.setsName("Rahul");
+        s1.setRollNo(3);
+        s1.setAge(23);
 
 
-        SessionFactory sf = cnfg.buildSessionFactory();
+        SessionFactory sf = new Configuration()
+                .addAnnotatedClass(Student.class)
+                .configure()
+                .buildSessionFactory();
+
         Session session = sf.openSession();
 
         Transaction transaction = session.beginTransaction();
 
-        session.save(s1);
+        session.persist(s1);
         transaction.commit();
+
+        session.close();
+        sf.close();
     }
 }
