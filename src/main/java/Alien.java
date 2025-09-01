@@ -1,6 +1,10 @@
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 
 import javax.print.attribute.standard.MediaSize;
+import java.util.List;
 
 //@Entity(name = "alien_table")
 @Entity
@@ -10,8 +14,8 @@ public class Alien {
     private int id;
     private String name;
     private String tech;
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany(mappedBy = "alien")
+    private List<Laptop> laptops;
 
     public int getId() {
         return id;
@@ -37,12 +41,12 @@ public class Alien {
         this.name = name;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptops() {
+        return laptops;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
     }
 
     @Override
@@ -51,7 +55,7 @@ public class Alien {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", tech='" + tech + '\'' +
-                ", laptop=" + laptop +
+                ", laptops=" + laptops +
                 '}';
     }
 }
