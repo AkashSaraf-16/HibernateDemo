@@ -4,14 +4,13 @@ import javax.print.attribute.standard.MediaSize;
 
 //@Entity(name = "alien_table")
 @Entity
-@Table(name = "alien_table")
+//@Table(name = "alien_table")
 public class Alien {
     @Id
     private int id;
-    @Column(name = "alien_name")
     private String name;
-    @Transient
     private String tech;
+    private Laptop laptop;
 
     public int getId() {
         return id;
@@ -37,12 +36,21 @@ public class Alien {
         this.name = name;
     }
 
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
+
     @Override
     public String toString() {
         return "Alien{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", tech='" + tech + '\'' +
+                ", laptop=" + laptop +
                 '}';
     }
 }
