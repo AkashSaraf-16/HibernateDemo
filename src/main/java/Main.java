@@ -20,14 +20,34 @@ public class Main {
         l2.setModel("XPS");
         l2.setRam(32);
 
+        Laptop l3 = new Laptop();
+        l3.setLid(3);
+        l3.setBrand("Apple");
+        l3.setModel("Macbook Pro");
+        l3.setRam(16);
+
         Alien a1 = new Alien();
         a1.setId(1);
         a1.setName("Virendra");
         a1.setTech("JS");
-        a1.setLaptops(Arrays.asList(l1, l2));
 
-        l1.setAlien(a1);
-        l2.setAlien(a1);
+        Alien a2 = new Alien();
+        a2.setId(2);
+        a2.setName("Akash");
+        a2.setTech("DSA");
+
+        Alien a3 = new Alien();
+        a3.setId(3);
+        a3.setName("Mintu");
+        a3.setTech("Java");
+
+        a1.setLaptops(Arrays.asList(l2, l3));
+        a2.setLaptops(Arrays.asList(l2, l1));
+        a3.setLaptops(Arrays.asList(l3));
+
+        l1.setAliens(Arrays.asList(a2));
+        l2.setAliens(Arrays.asList(a1, a2));
+        l3.setAliens(Arrays.asList(a3));
 
 
         SessionFactory sf = new Configuration()
@@ -40,8 +60,11 @@ public class Main {
         Transaction transaction = session.beginTransaction();
 
         session.persist(a1);
+        session.persist(a2);
+        session.persist(a3);
         session.persist(l1);
         session.persist(l2);
+        session.persist(l3);
         transaction.commit();
 
         session.close();
