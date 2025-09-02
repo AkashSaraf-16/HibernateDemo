@@ -1,26 +1,34 @@
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
-
-import javax.print.attribute.standard.MediaSize;
 import java.util.List;
 
-//@Entity(name = "alien_table")
 @Entity
-//@Table(name = "alien_table")
 public class Alien {
+
     @Id
-    private int id;
-    private String name;
+    private int aid;
+    private String aname;
     private String tech;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany
     private List<Laptop> laptops;
 
-    public int getId() {
-        return id;
+    public List<Laptop> getLaptops() {
+        return laptops;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
+
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
     }
 
     public String getTech() {
@@ -31,27 +39,19 @@ public class Alien {
         this.tech = tech;
     }
 
-    public String getName() {
-        return name;
+    public String getAname() {
+        return aname;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Laptop> getLaptops() {
-        return laptops;
-    }
-
-    public void setLaptops(List<Laptop> laptops) {
-        this.laptops = laptops;
+    public void setAname(String aname) {
+        this.aname = aname;
     }
 
     @Override
     public String toString() {
         return "Alien{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "aid=" + aid +
+                ", aname='" + aname + '\'' +
                 ", tech='" + tech + '\'' +
                 ", laptops=" + laptops +
                 '}';

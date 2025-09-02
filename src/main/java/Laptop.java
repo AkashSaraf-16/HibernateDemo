@@ -1,44 +1,15 @@
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-
-import java.util.List;
 
 @Entity
 public class Laptop {
+
     @Id
     private int lid;
     private String brand;
     private String model;
     private int ram;
-    @ManyToMany(mappedBy = "laptops")
-    private List<Alien> aliens;
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getRam() {
-        return ram;
-    }
-
-    public void setRam(int ram) {
-        this.ram = ram;
-    }
 
     public int getLid() {
         return lid;
@@ -48,12 +19,30 @@ public class Laptop {
         this.lid = lid;
     }
 
-    public List<Alien> getAliens() {
-        return aliens;
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public void setAliens(List<Alien> aliens) {
-        this.aliens = aliens;
+
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getRam() {
+        return ram;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     @Override
