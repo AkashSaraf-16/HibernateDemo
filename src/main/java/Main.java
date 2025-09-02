@@ -59,12 +59,8 @@ public class Main {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
-        session.persist(a1);
-        session.persist(a2);
-        session.persist(a3);
-        session.persist(l1);
-        session.persist(l2);
-        session.persist(l3);
+        Alien fetchedAlien = session.find(Alien.class, 2);
+//        System.out.println(fetchedAlien);
         transaction.commit();
 
         session.close();

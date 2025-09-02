@@ -1,7 +1,4 @@
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 
 import javax.print.attribute.standard.MediaSize;
@@ -15,7 +12,7 @@ public class Alien {
     private int id;
     private String name;
     private String tech;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Laptop> laptops;
 
     public int getId() {
